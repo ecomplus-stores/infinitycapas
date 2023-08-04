@@ -6,7 +6,9 @@
   "links_1": {
     "list_pages": true,
     "title": "Páginas",
-    "list": []
+    "list": [
+      {}
+    ]
   },
   "links_2": {
     "list_categories": true,
@@ -23,19 +25,26 @@
   "stamps": [
     {
       "src": "/img/uploads/ssl-safe.png",
-      "alt": "Secure connection",
-      "width": 150,
-      "height": 62
+      "alt": "Secure connection"
     }
   ],
   "payment_methods": {
-    "pix": true,
+    "bb": false,
     "visa": true,
-    "mastercard": true,
+    "boleto": true,
+    "aura": false,
+    "banrisul": false,
     "elo": true,
-    "amex": true,
     "hipercard": true,
-    "boleto": true
+    "hsbc": false,
+    "bradesco": false,
+    "santander": false,
+    "mastercard": true,
+    "citibank": false,
+    "diners": true,
+    "mais": false,
+    "amex": true,
+    "itau": false
   },
   "credits": ""
 }

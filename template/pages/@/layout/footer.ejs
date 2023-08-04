@@ -2,13 +2,23 @@
 // load footer options and contacts from content
 const footer = _.cms('footer') || {}
 const contacts = _.cms('contacts') || {}
-const themeCustom = _.settings.theme.custom || ''
+
+// social networks handled by contacts
+const networksWithColors = [
+  ['facebook', '#3b5998'],
+  ['youtube', '#ff0000'],
+  ['instagram', '#e1306c'],
+  ['twitter', '#1da1f2'],
+  ['tiktok', '#000000'],
+  ['pinterest', '#bd081c'],
+  ['linkedin', '#0073b1']
+]
 %>
 
 <footer class="footer py-3 py-lg-4 py-xl-5">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-lg-auto order-<%= themeCustom === 'ecom-beauty' ? '' : 'lg-'%>last pl-xl-4">
+      <div class="col-12 col-lg-auto order-lg-last">
         <div class="footer__contacts">
           <% if (footer.contacts.title) { %>
             <div class="footer__title">
@@ -21,7 +31,7 @@ const themeCustom = _.settings.theme.custom || ''
               <% if (contacts.whatsapp) { %>
                 <li>
                   <span class="footer__list-icon">
-                    <i class="i-whatsapp"></i>
+                    <i class="fab fa-whatsapp"></i>
                   </span>
                   <a
                     href="javascript:;"
@@ -37,7 +47,7 @@ const themeCustom = _.settings.theme.custom || ''
               <% if (contacts.phone) { %>
                 <li>
                   <span class="footer__list-icon">
-                    <i class="i-phone"></i>
+                    <i class="fas fa-phone"></i>
                   </span>
                   <a
                     href="tel:+<%= contacts.phone.replace(/\D/g, '') %>"
@@ -67,96 +77,70 @@ const themeCustom = _.settings.theme.custom || ''
 
           <% if (footer.contacts.socials) { %>
             <p class="footer__social">
-              <%- await include('@/layout/inc/networks', { _, contacts }) %>
+              <% networksWithColors.forEach(([network, color]) => { %>
+                <% if (contacts[network]) { %>
+                  <a
+                    href="<%= contacts[network] %>"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="<%= network %>"
+                    style="color: <%= color %>"
+                  >
+                    <i class="fab fa-<%= network %>"></i>
+                  </a>
+                <% } %>
+              <% }) %>
             </p>
           <% } %>
         </div>
       </div>
 
-      <% if (footer.links_1.list_pages || footer.links_1.list.find(({ url }) => url)) { %>
-        <div class="col-12 col-sm-6 col-lg col-xl-auto px-xl-4">
-          <a
-            class="footer__title"
-            data-toggle="collapse"
-            href="#footer-pages"
-            role="button"
-            aria-expanded="false"
-            aria-controls="footer-pages"
-          >
-            <%= footer.links_1.title || _.dictionary('pages') %>
-          </a>
-          <div class="collapse" id="footer-pages">
-            <% if (footer.links_1.list_pages) { %>
-              <ul class="footer__links">
-                <% (_.cms('pages') || []).forEach(slug => { %>
-                  <% const { title } = _.cms(`pages/${slug}`) %>
-                  <li>
-                    <i class="i-chevron-right"></i>
-                    <a href="/pages/<%= slug %>">
-                      <%= title %>
-                    </a>
-                  </li>
-                <% }) %>
-              </ul>
-            <% } else { %>
-              <ul class="footer__links">
-                <% footer.links_1.list.forEach(({ url, text }) => { %>
-                  <li>
-                    <i class="i-chevron-right"></i>
-                    <a href="<%= url %>">
-                      <%= text %>
-                    </a>
-                  </li>
-                <% }) %>
-              </ul>
-            <% } %>
-          </div>
+      <div class="col-12 col-sm-6 col-lg">
+        <a
+          class="footer__title"
+          data-toggle="collapse"
+          href="#footer-pages"
+          role="button"
+          aria-expanded="false"
+          aria-controls="footer-pages"
+        >
+          <%= footer.links_1.title || _.dictionary('pages') %>
+        </a>
+        <div class="collapse" id="footer-pages">
+          <% if (footer.links_1.list_pages) { %>
+            <ul class="footer__links">
+              <% (_.cms('pages') || []).forEach(slug => { %>
+                <% const { title } = _.cms(`pages/${slug}`) %>
+                <li>
+                  <i class="fas fa-angle-right"></i>
+                  <a href="/pages/<%= slug %>">
+                    <%= title %>
+                  </a>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            <ul class="footer__links">
+              <% footer.links_1.list.forEach(({ url, text }) => { %>
+                <li>
+                  <i class="fas fa-angle-right"></i>
+                  <a href="<%= url %>">
+                    <%= text %>
+                  </a>
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
         </div>
-      <% } %>
+      </div>
 
-      <% if (footer.links_2.list_categories || footer.links_2.list.find(({ url }) => url)) { %>
-        <div class="col-12 col-sm-6 col-lg col-xl-auto px-xl-4">
-          <a
-            class="footer__title"
-            data-toggle="collapse"
-            href="#footer-categories"
-            role="button"
-            aria-expanded="false"
-            aria-controls="footer-categories"
-          >
-            <%= footer.links_2.title || _.dictionary('categories') %>
-          </a>
-          <div class="collapse" id="footer-categories">
-            <% if (footer.links_2.list_categories) { %>
-              <ul class="footer__links">
-                <% _.categories.forEach(({ name, slug, parent }) => { %>
-                  <% if (!parent) { %>
-                    <li>
-                      <i class="i-chevron-right"></i>
-                      <a href="/<%= slug %>">
-                        <%= name %>
-                      </a>
-                    </li>
-                  <% } %>
-                <% }) %>
-              </ul>
-            <% } else { %>
-              <ul class="footer__links">
-                <% footer.links_2.list.forEach(({ url, text }) => { %>
-                  <li>
-                    <i class="i-chevron-right"></i>
-                    <a href="<%= url %>">
-                      <%= text %>
-                    </a>
-                  </li>
-                <% }) %>
-              </ul>
-            <% } %>
-          </div>
-        </div>
-      <% } %>
+      <div class="col-12 col-sm-6 col-xl-4">
+        <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v8.0&appId=167752976907076&autoLogAppEvents=1" nonce="QIM2K1D2"></script>
+        <div class="fb-page" data-href="https://www.facebook.com/FishingCoOficial/" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/FishingCoOficial/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/FishingCoOficial/">Fishing Co</a></blockquote></div>
+      </div>
 
-      <div class="col-12 col-xl order-<%= themeCustom === 'ecom-beauty' ? '' : 'lg-'%>first">
+      <div class="col-12 col-lg order-lg-first">
         <h2 class="footer__title footer__store">
           <%= footer.description.title || _.settings.name %>
         </h2>
@@ -181,30 +165,24 @@ const themeCustom = _.settings.theme.custom || ''
       <span>
         <%= footer.credits || `© ${_.store.name} / ${contacts.address} / ${contacts.doc_number}` %>
       </span>
-      <% if (themeCustom === 'ecom-beauty') { %>
-        <div class="ecom-credits-container">
-          <div class="ecom-credits">
-            <a href="https://e-com.plus" target="_blank" rel="noopener">
-              <img
-                src="https://ecom.nyc3.cdn.digitaloceanspaces.com/storefront/ecom-credits-white.png"
-                alt="E-Com Plus"
-                width="125.42"
-                height="20"
-              >
-            </a>
-          </div>
-        </div>
-      <% } %>
       <button
         id="go-to-top"
         class="btn btn-primary ml-3"
         type="button"
         aria-label="<%= _.dictionary('goToTop') %>"
       >
-        <i class="i-chevron-up"></i>
+        <i class="fas fa-chevron-up"></i>
       </button>
     </div>
-  </div>  
+  </div>
 </footer>
 
-<%- await include('@/layout/inc/ecom-credits') %>
+<div class="ecom-credits">
+  <a href="https://e-com.plus" target="_blank" rel="noopener">
+    Powered by
+    <img
+      src="https://ecom.nyc3.digitaloceanspaces.com/brand/plus/198x43.png"
+      alt="E-Com Plus"
+    >
+  </a>
+</div>

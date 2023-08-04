@@ -1,7 +1,8 @@
 {
   "shipping": {
     "show": true,
-    "text": "Entregamos para todo o Brasil"
+    "text": "Frete Grátis: Conheça as Regras",
+    "link": "/pages/termos"
   },
   "installments": {
     "show": true,
@@ -9,10 +10,10 @@
   },
   "exchange": {
     "show": true,
-    "text": "Não gostou? A primeira troca é gratuita"
+    "text": " (47)8814-3739 Atendimento via WhatsApp "
   },
   "promo": {
     "show": true,
-    "text": "Diferentes promoções ao longo do ano!"
+    "text": "Loja Segura"
   }
 }

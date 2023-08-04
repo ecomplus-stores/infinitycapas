@@ -1,6 +1,12 @@
 {
-  "title": "Formas de pagamento",
-  "meta_title": "Formas de pagamento",
-  "meta_description": "Formas de pagamento",
-  "body": "### Lorem ipsum dolor sit amet"
+  "title": "Catálogo 2019",
+  "meta_title": "Catálogo 2019",
+  "meta_description": "Catálogo 2019",
+  "body": "### /",
+  "sections": [
+    {
+      "type": "custom-html",
+      "html": "<div class=\"col-md-12\">\n\n\n    <div class=\"content-page\">\n        <h1 style=\"text-align: center; \"><span style=\"font-weight: bold;\"><br></span></h1>\n        <h1 style=\"text-align: center; \"><span style=\"font-weight: bold;\"><br></span></h1>\n        <h1 style=\"text-align: center; \"><span style=\"font-weight: bold;\"><br></span></h1>\n        <h1 style=\"text-align: center; \"><br></h1>\n        <h1 style=\"text-align: center; \"><a href=\"https://drive.google.com/open?id=1VQq9DqHM65i61lvyntQkCkhybgtwowly\"\n                target=\"_blank\" style=\"font-weight: bold; text-decoration-line: underline; color: #e36159\">CATÁLOGO 2019 CLIQUE\n                AQUI</a></h1>\n        <h1 style=\"text-align: center; \"><br></h1>\n        <h1 style=\"text-align: center; \"><br></h1>\n        <h1 style=\"text-align: center; \"><br></h1>\n        <h1 style=\"text-align: center; \"><br></h1>\n        <h1 style=\"text-align: center; \"><br></h1>\n    </div>\n</div>"
+    }
+  ]
 }

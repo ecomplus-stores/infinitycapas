@@ -1,1 +1,125 @@
 // Add your custom CSS here.
+.header  {
+  background: #fff;
+}
+#search-form {
+  border: 1px solid;
+  border-radius: .25rem;
+}
+#user-button i, #cart-button i, .header__search-btn i {
+  color: #000;
+}
+#cart-count {
+  background: #ed1c24;
+}
+.footer {
+  border-top: 0;
+}
+@media(max-width: 767px) {
+  .address-form .form-row .form-group {
+    width: 50%;
+  }
+  .checkout__step--past {
+    color: #000 !important;
+    opacity: .6 !important;
+  }
+  .checkout__step--current {
+    color: var(--success) !important;
+  }
+  .checkout__step--current::after {
+    content: '\A ETAPA 2';
+    white-space: pre;
+    color: var(--success)
+  }
+  .checkout__step--past::after {
+    content: '\A ETAPA 1';
+    white-space: pre;
+    color: #000;
+    opacity: .6;
+  }
+}
+#product-description .container .lead {
+    background: #ed1c24;
+    color: #fff;
+    font-weight: bold;
+    padding: var(--spacer-2);
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 0;
+}
+#product-description .container .html-clearfix {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: var(--spacer-2);
+    margin-top: 0;
+}
+.product-card__buy button, .product__buy button  {
+    border: #ed1c24;
+    background: #ed1c24;
+}
+.product-card__buy button:hover, .product__buy button:hover {
+    background-color: #28A745;
+    border-color: #28A745;
+}
+
+.shipping-calculator__services:before {
+  content: 'Selecione a forma de envio abaixo';
+  font-weight: bold;
+}
+#product-actions .prices__value {
+ color: #ed1c24;
+}
+#product-actions .prices__installments span {
+ color: #3eb058;
+}
+.shipping-calculator__services .list-group-item.active {
+    z-index: 2;
+    color: var(--primary-lightest-yiq);
+    background-color: #28A745;
+    border-color: #28A745;
+}
+.product__free-shipping-from {
+display: none !important;
+}
+.product-card__buy.fade {
+  opacity: 1 !important;
+}
+.header {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+#nav-bar {
+  & a {
+    color: #fff;
+  }
+  padding: 10px;
+  background-color: #000;
+}
+#c-5f40408cf023684cdbdbe5a4 {
+ display: none;
+}
+.products-carousel .prices.product-card__prices {
+  display: flex !important;
+  flex-direction: column;
+}
+.products-carousel .prices .prices__value {
+   order: 3;
+   font-size: var(--font-size)
+}
+.products-carousel .product-card__prices .prices__value:first-child {
+    margin-top: unset;
+}
+.products-carousel .prices .prices__installments {
+  order: 1;
+  font-size: var(--font-size)
+}
+.products-carousel h3, .products-carousel strong, .products-carousel .product-card__prices, .product-card h3, .product-card .product-card__prices,.product-card .prices__discount{
+  text-align: center;
+}
+.product__buy button {
+    padding: .5rem 4rem;
+}
+#cart-quickview .minicart__btn-checkout.btn.btn-block.btn-primary, .order-info__toggle {
+  display: none !important;
+}
